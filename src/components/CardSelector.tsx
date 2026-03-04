@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
+import Image from "next/image";
 import { CreditCard } from "@/types";
-import { ALL_CARDS, ISSUERS, cardGradientMap } from "@/data/cards";
+import { ALL_CARDS, ISSUERS, cardImageMap, cardGradientMap } from "@/data/cards";
 
 interface CardSelectorProps {
   selectedIds: string[];
@@ -51,6 +52,7 @@ export default function CardSelector({ selectedIds, onToggle, onClose }: CardSel
                 <div className="space-y-2">
                   {issuerCards.map((card) => {
                     const isSelected = selectedIds.includes(card.id);
+                    const imageSrc = cardImageMap[card.id];
                     const gradient = cardGradientMap[card.id] ?? "linear-gradient(135deg, #374151 0%, #1f2937 100%)";
                     return (
                       <button
@@ -58,11 +60,14 @@ export default function CardSelector({ selectedIds, onToggle, onClose }: CardSel
                         onClick={() => onToggle(card)}
                         className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors text-left"
                       >
-                        {/* Mini card color swatch */}
-                        <div
-                          className="w-10 h-7 rounded-md flex-shrink-0"
-                          style={{ background: gradient }}
-                        />
+                        {/* Mini card image */}
+                        <div className="w-14 h-9 rounded-md flex-shrink-0 overflow-hidden relative">
+                          {imageSrc ? (
+                            <Image src={imageSrc} alt={card.name} fill className="object-cover" sizes="56px" />
+                          ) : (
+                            <div className="absolute inset-0 rounded-md" style={{ background: gradient }} />
+                          )}
+                        </div>
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-medium text-white truncate">{card.name}</p>
                           <p className="text-xs text-gray-400">

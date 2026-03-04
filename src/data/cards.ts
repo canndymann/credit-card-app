@@ -1,6 +1,28 @@
 import { CreditCard } from "@/types";
 
-// Inline gradient styles to avoid Tailwind purging dynamic classes
+// Map card IDs to local image paths in /public/cards/
+export const cardImageMap: Record<string, string> = {
+  "chase-sapphire-preferred": "/cards/chase-sapphire-preferred.png",
+  "chase-sapphire-reserve": "/cards/chase-sapphire-reserve.png",
+  "chase-freedom-unlimited": "/cards/chase-freedom-unlimited.png",
+  "chase-freedom-flex": "/cards/chase-freedom-flex.png",
+  "amex-gold": "/cards/amex-gold.png",
+  "amex-platinum": "/cards/amex-platinum.png",
+  "amex-blue-cash-preferred": "/cards/amex-blue-cash-preferred.png",
+  "amex-blue-cash-everyday": "/cards/amex-blue-cash-everyday.png",
+  "capital-one-venture-x": "/cards/capital-one-venture-x.png",
+  "capital-one-savor": "/cards/capital-one-savor.png",
+  "citi-double-cash": "/cards/citi-double-cash.webp",
+  "citi-strata-premier": "/cards/citi-strata-premier.webp",
+  "discover-it": "/cards/discover-it.png",
+  "wells-fargo-autograph": "/cards/wells-fargo-autograph.jpg",
+  "bofa-customized-cash": "/cards/bofa-customized-cash.png",
+  "bilt-mastercard": "/cards/bilt-mastercard.jpg",
+  "hilton-honors-surpass": "/cards/hilton-honors-surpass.png",
+  "marriott-bonvoy-boundless": "/cards/marriott-bonvoy-boundless.png",
+};
+
+// Fallback gradient styles
 export const cardGradientMap: Record<string, string> = {
   "chase-sapphire-preferred": "linear-gradient(135deg, #1a365d 0%, #2a4a7f 100%)",
   "chase-sapphire-reserve": "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)",
